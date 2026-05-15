@@ -52,7 +52,7 @@ interface FullState {
 const CELL = 20
 const COLS = 21
 const ROWS = 23
-const FPS = 15
+const FPS = 20
 
 // Maze template: 0=empty, 1=wall, 2=dot, 3=power pellet, 4=ghost house
 const MAZE_TEMPLATE: number[][] = [
@@ -485,7 +485,7 @@ export default function PacmanPage() {
     }
 
     // Input
-    const speed = 2
+    const speed = 3
     if (keysRef.current.has('ArrowLeft')) pacman.nextDir = 'LEFT'
     if (keysRef.current.has('ArrowRight')) pacman.nextDir = 'RIGHT'
     if (keysRef.current.has('ArrowUp')) pacman.nextDir = 'UP'
@@ -583,7 +583,7 @@ export default function PacmanPage() {
         ghost.eyeDir = ghost.dir
       }
 
-      const ghostSpeed = ghost.mode === 'FRIGHTENED' ? 1 : ghost.mode === 'EATEN' ? 3 : 2
+      const ghostSpeed = ghost.mode === 'FRIGHTENED' ? 2 : ghost.mode === 'EATEN' ? 4 : 3
       if (canMove(gs.maze, ghost.x, ghost.y, ghost.dir, ghostSpeed)) {
         const { dx, dy } = directionVector(ghost.dir)
         ghost.x += dx * ghostSpeed
